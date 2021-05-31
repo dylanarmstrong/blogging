@@ -1,0 +1,36 @@
+{{ $original := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+{{ $alt := .Get "alt" }}
+
+{{ .Scratch.Set "webp768" ($original.Resize "768x webp") }}
+{{ $webp768 := .Scratch.Get "webp768" }}
+
+{{ .Scratch.Set "webp650" ($original.Resize "650x webp") }}
+{{ $webp650 := .Scratch.Get "webp650" }}
+
+{{ .Scratch.Set "webp325" ($original.Resize "325x webp") }}
+{{ $webp325 := .Scratch.Get "webp325" }}
+
+{{ .Scratch.Set "webp163" ($original.Resize "163x webp") }}
+{{ $webp163 := .Scratch.Get "webp163" }}
+
+{{ .Scratch.Set "jpeg768" ($original.Resize "768x") }}
+{{ $jpeg768 := .Scratch.Get "jpeg768" }}
+
+{{ .Scratch.Set "jpeg650" ($original.Resize "650x") }}
+{{ $jpeg650 := .Scratch.Get "jpeg650" }}
+
+{{ .Scratch.Set "jpeg325" ($original.Resize "325x") }}
+{{ $jpeg325 := .Scratch.Get "jpeg325" }}
+
+{{ .Scratch.Set "jpeg163" ($original.Resize "163x") }}
+{{ $jpeg163 := .Scratch.Get "jpeg163" }}
+
+<span class='image-wrapper'>
+  <a target='_blank' href='{{ $original }}'>
+    <picture>
+      <source srcset='{{ $webp163.RelPermalink }} 163w, {{ $webp325.RelPermalink }} 325w, {{ $webp650.RelPermalink }} 650w, {{ $webp768.RelPermalink }} 768w' sizes='(max-width: 650px) 100vw, 650px' type='image/webp' />
+      <source srcset='{{ $jpeg163.RelPermalink }} 163w, {{ $jpeg325.RelPermalink }} 325w, {{ $jpeg650.RelPermalink }} 650w, {{ $jpeg768.RelPermalink }} 768w' sizes='(max-width: 650px) 100vw, 650px' type='image/jpeg' />
+      <img alt='{{ $alt }}' src='{{ $original }}' />
+    </picture>
+  </a>
+</span>

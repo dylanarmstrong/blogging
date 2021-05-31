@@ -1,0 +1,36 @@
+{{ $icon_size := "32px" }}
+
+<div class='bio'>
+  <img class='face' src='/blogging/assets/face.jpg' alt='{{ .Site.Params.author }}' />
+  <p>
+    <strong>
+      Personal Blog by
+      <a
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://github.com/{{ .Site.Params.social.github }}'
+      >{{ .Site.Params.author }}</a>
+    </strong>
+    <span>{{ .Site.Params.description }}</span>
+    <a
+      target='_blank'
+      rel='noopener noreferrer'
+      href='https://github.com/{{ .Site.Params.social.github }}'
+    >{{ partialCached "svg/github.svg" (dict "size" $icon_size) $icon_size }}</a>
+    <a
+      target='_blank'
+      rel='noopener noreferrer'
+      href='https://instagram.com/{{ .Site.Params.social.instagram }}'
+    >{{ partialCached "svg/instagram.svg" (dict "size" $icon_size) $icon_size }}</a>
+    <a
+      target='_blank'
+      rel='noopener noreferrer'
+      href='https://linkedin.com/in/{{ .Site.Params.social.linkedin }}'
+    >{{ partialCached "svg/linkedin.svg" (dict "size" $icon_size) $icon_size }}</a>
+    <a
+      target='_blank'
+      rel='noopener noreferrer'
+      href='mailto:{{ .Site.Params.social.email }}'
+    >{{ partialCached "svg/mail.svg" (dict "size" $icon_size) $icon_size }}</a>
+  </p>
+</div>

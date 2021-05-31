@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang='en-us'>
+{{ partial "head.html" . }}
+  <body>
+    <!-- _defaults/single.html -->
+    <div class='container'>
+      {{ partial "title.html" . }}
+      {{ partial "bio.html" . }}
+
+      <section>
+        <h1>{{ .Title }}</h1>
+        <p class='date'>{{ dateFormat "January 02, 2006" .Params.date }}</p>
+        <article>
+          {{ .Content }}
+        </article>
+
+        <ul class='pagination'>
+          {{ if .PrevPage }}
+            <li>
+              <a href='{{ .PrevPage.Permalink }}'>← {{ .PrevPage.Title | truncate 50 "..." }}</a>
+            </li>
+          {{ end }}
+
+          {{ if .NextPage }}
+            <li>
+              <a href='{{ .NextPage.Permalink }}'>{{ .NextPage.Title | truncate 50 "..." }} →</a>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang='en-us'>
+{{ partial "head.html" . }}
+  <body>
+    list.html
+    <div>
+    {{ range sort .Data.Pages "Date" "desc" }}
+    {{ partial "spoiler.html" . }}
+    {{ end }}
+    </div> 
+  </body>
+</html>
+
