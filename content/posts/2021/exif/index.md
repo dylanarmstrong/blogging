@@ -133,6 +133,9 @@ year:month:day. I have no idea why?
   date = get(data, 'Exif.Image.DateTime'),
   if date:
       try:
+          # Uganda pictures are coming back as a tuple
+          if isinstance(date, tuple):
+              date = date[0]
           date = datetime.strptime(
               date,
               '%Y:%m:%d %H:%M:%S'
