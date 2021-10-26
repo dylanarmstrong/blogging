@@ -2,7 +2,7 @@
 
 <div class='bio'>
   <img class='face' src='/blogging/assets/face.jpg' alt='{{ .Site.Params.author }}' />
-  <p>
+  <div>
     <strong>
       Personal Blog by
       <a
@@ -12,25 +12,58 @@
       >{{ .Site.Params.author }}</a>
     </strong>
     <span>{{ .Site.Params.description }}</span>
+    <strong>
+      Projects
+    </strong>
+
     <a
-      target='_blank'
+      alt='Photos'
+      href='https://dylan.is/photos'
       rel='noopener noreferrer'
+      target='_blank'
+      title='Photos'
+    >Photos</a>
+    •
+    <a
+      alt='Crossword'
+      href='https://dylan.is/crossword/'
+      rel='noopener noreferrer'
+      target='_blank'
+      title='Crossword'
+    >Crossword</a>
+
+    <div class='break'></div>
+    <strong>
+      Socials
+    </strong>
+
+    <a
+      alt='Github'
       href='https://github.com/{{ .Site.Params.social.github }}'
+      rel='noopener noreferrer'
+      target='_blank'
+      title='Github'
     >{{ partialCached "svg/github.svg" (dict "size" $icon_size) $icon_size }}</a>
     <a
-      target='_blank'
-      rel='noopener noreferrer'
+      alt='Instagram'
       href='https://instagram.com/{{ .Site.Params.social.instagram }}'
+      rel='noopener noreferrer'
+      target='_blank'
+      title='Instagram'
     >{{ partialCached "svg/instagram.svg" (dict "size" $icon_size) $icon_size }}</a>
     <a
-      target='_blank'
-      rel='noopener noreferrer'
+      alt='LinkedIn'
       href='https://linkedin.com/in/{{ .Site.Params.social.linkedin }}'
+      rel='noopener noreferrer'
+      target='_blank'
+      title='LinkedIn'
     >{{ partialCached "svg/linkedin.svg" (dict "size" $icon_size) $icon_size }}</a>
     <a
-      target='_blank'
-      rel='noopener noreferrer'
+      alt='Email'
       href='mailto:{{ .Site.Params.social.email }}'
+      rel='noopener noreferrer'
+      target='_blank'
+      title='Email'
     >{{ partialCached "svg/mail.svg" (dict "size" $icon_size) $icon_size }}</a>
-  </p>
+  </div>
 </div>

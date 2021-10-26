@@ -205,13 +205,24 @@ footer [role='img']:hover {
   flex-basis: auto;
   flex-grow: 1;
   flex-shrink: 1;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 1.5rem;
 }
 
-.bio p {
+.bio div {
   margin: auto 0;
   line-height: 1.3;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.bio .projects {
+  margin-left: 5rem;
+  margin-top: 1rem;
 }
 
 .bio span,
