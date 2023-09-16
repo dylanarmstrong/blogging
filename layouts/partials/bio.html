@@ -1,14 +1,21 @@
 {{ $icon_size := "32px" }}
 
 <div class='bio'>
-  <img class='face' src='/blogging/assets/face.jpg' alt='{{ .Site.Params.author }}' />
+  <img
+    alt='{{ .Site.Params.author }}'
+    class='face'
+    src='/blogging/assets/face.jpg'
+    width='80px'
+    height='80px'
+  />
   <div>
     <strong>
       Personal Blog by
       <a
-        target='_blank'
-        rel='noopener noreferrer'
+        class='self'
         href='https://github.com/{{ .Site.Params.social.github }}'
+        rel='noopener noreferrer'
+        target='_blank'
       >{{ .Site.Params.author }}</a>
     </strong>
     <span>{{ .Site.Params.description }}</span>
