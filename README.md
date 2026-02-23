@@ -29,7 +29,7 @@ rsync -avP --delete-before public/ https://server.example/blogging/
 The underlying source code for this blog is provided under the
 [ISC](LICENSE) license.
 
-All files under the directory `content/` are not included 
+All files under the directory `content/` are not included
 under this license, and all rights are reserved to me.
 This includes the posts, photos, videos, and any other
 accompanying files.

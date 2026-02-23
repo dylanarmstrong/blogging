@@ -1,20 +1,21 @@
-baseURL: 'https://dylan.is/blogging'
+baseURL: "https://dylan.is/blogging"
 enableEmoji: true
 frontmatter:
   date:
     - date
   spoiler:
     - spoiler
-languageCode: 'en-us'
-title: 'blogging'
-author: 'Dylan Armstrong'
+languageCode: "en-us"
+title: "blogging"
+author: "Dylan Armstrong"
 
 Params:
-  author: 'Dylan Armstrong'
+  author: "Dylan Armstrong"
   description: "Just some random, potentially useful, things I've written about."
   social:
-    email: 'dylan@dylan.is'
-    github: 'dylanarmstrong'
-    instagram: 'gracie_and_oliver'
-    linkedin: 'dylanarmstrong116'
-    twitter: 'helloasdff'
+    email: "dylan@dylan.is"
+    forgejo: "dylan"
+    github: "dylanarmstrong"
+    instagram: "gracie_and_oliver"
+    linkedin: "dylanarmstrong116"
+    twitter: "helloasdff"

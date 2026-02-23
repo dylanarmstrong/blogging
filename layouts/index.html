@@ -1,16 +1,14 @@
 <!doctype html>
-<html lang='en-us'>
-{{ partial "head.html" . }}
+<html lang="en-us">
+  {{ partial "head.html" . }}
   <body>
     <!-- index.html -->
-    <div class='container'>
-      {{ partial "title.html" . }}
-      {{ partial "bio.html" . }}
+    <div class="container">
+      {{ partial "title.html" . }} {{ partial "bio.html" . }}
 
       <section>
-        {{ range sort .Site.RegularPages "Date" "desc" }}
-        {{ partial "spoiler.html" . }}
-        {{ end }}
+        {{ range sort .Site.RegularPages "Date" "desc" }} {{ partial
+        "spoiler.html" . }} {{ end }}
       </section>
 
       {{ partial "footer.html" . }}
