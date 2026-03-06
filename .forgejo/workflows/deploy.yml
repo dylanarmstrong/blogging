@@ -1,0 +1,38 @@
+name: Deploy to BunnyCDN
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: docker
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Hugo
+        run: |
+          curl -sL "https://github.com/gohugoio/hugo/releases/download/v0.157.0/hugo_extended_0.157.0_linux-amd64.tar.gz" -o hugo.tar.gz
+          tar -xzf hugo.tar.gz hugo
+          mv hugo /usr/local/bin/hugo
+          hugo version
+
+      - name: Build
+        run: |
+          rm -rf public
+          hugo -b https://dylan.is/blogging -e production
+
+      - name: Deploy to BunnyCDN
+        run: |
+          cd public
+          find . -type f | while read -r file; do
+            file="${file#./}"
+            echo "Uploading: $file"
+            curl -s --fail -X PUT \
+              -H "AccessKey: ${{ secrets.BUNNYNET_STORAGE_PASSWORD }}" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary "@$file" \
+              "https://storage.bunnycdn.com/dylanis-blogging/blogging/$file"
+          done
