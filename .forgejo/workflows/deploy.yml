@@ -24,15 +24,22 @@ jobs:
           rm -rf public
           hugo -b https://dylan.is/blogging -e production
 
+      - name: Clean BunnyCDN storage
+        run: |
+          curl -s --fail -X DELETE \
+            -H "AccessKey: ${{ secrets.BUNNYNET_STORAGE_PASSWORD }}" \
+            "https://storage.bunnycdn.com/dylanis-blogging/blogging/"
+
       - name: Deploy to BunnyCDN
         run: |
           cd public
           find . -type f | while read -r file; do
             file="${file#./}"
+            encoded=$(python3 -c "from urllib.parse import quote; import sys; print(quote(sys.argv[1]))" "$file")
             echo "Uploading: $file"
             curl -s --fail -X PUT \
               -H "AccessKey: ${{ secrets.BUNNYNET_STORAGE_PASSWORD }}" \
               -H "Content-Type: application/octet-stream" \
               --data-binary "@$file" \
-              "https://storage.bunnycdn.com/dylanis-blogging/blogging/$file"
+              "https://storage.bunnycdn.com/dylanis-blogging/blogging/$encoded"
           done
